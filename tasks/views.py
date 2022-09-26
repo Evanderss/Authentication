@@ -34,6 +34,8 @@ def singup(request):
 def tasks(request):
     return render(request, "tasks.html") 
 
+def create_tas(request):
+    return render(request, "create_tas.html")
 def signout(request):
     logout(request)
     return redirect("home")

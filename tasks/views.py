@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -47,9 +47,15 @@ def create_task(request):
 
 
 def task_detail(request, task_id):
-    task = get_list_or_404(Task, pk=task_id)
-    return render(request, "task_detail.html", {"task": task})
-
+    if request.method == "GET":
+        task = get_object_or_404(Task, pk=task_id)
+        form = TaskForm(instance=task)
+        return render(request, "task_detail.html", {"task": task, "form": form})
+    else:
+        task = get_object_or_404(Task, pk=task_id)
+        form = TaskForm(request.POST, instance=task)
+        form.save()
+        return redirect("tasks")
 
 def signout(request):
     logout(request)

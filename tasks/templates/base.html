@@ -13,7 +13,10 @@
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-link" href="/tasks/">Tasks</a>
+            <a class="nav-link" href="/tasks/">Tasks Pending</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/tasks_completed/">Tasks Completed</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/tasks/create/">Create Task</a>

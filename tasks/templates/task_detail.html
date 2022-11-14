@@ -8,12 +8,12 @@
         {{form.as_p}}
         <button>Update</button>
     </form>
-
+    <br>
     <form action="{% url 'complete_task' task.id %}" method="post">
         {% csrf_token %}
         <button>Complete</button>
     </form>
-
+    <br>
     <form action="{% url 'delete_task' task.id %}" method="post">
         {% csrf_token %}
         <button>Delete</button>
